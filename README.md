@@ -16,7 +16,7 @@ To use GenerativeModelRace, you need to have the following installed:
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/GenerativeModelRace.git
+   git clone [https://github.com/yourusername/GenerativeModelRace.git](https://github.com/reddote/GenerativeModelRace.git)
    cd GenerativeModelRace
    ```
 
