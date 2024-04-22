@@ -1,12 +1,14 @@
 using SimpleFileBrowser;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Serialization;
 
 // Make sure to include this namespace
 
 namespace ObjImporter{
-    public class FileDialog : MonoBehaviour
-    {
+    public class FileDialog : MonoBehaviour{
+        [FormerlySerializedAs("_objImporter")] [SerializeField] private ObjImporter objImporter;
+        
         void Start()
         {
             // Set filters (optional)
@@ -34,6 +36,7 @@ namespace ObjImporter{
             if (FileBrowser.Success)
             {
                 // FileBrowser.Result returns selected file(s) as string array
+                objImporter.path = FileBrowser.Result[0];
                 Debug.Log("Selected file: " + FileBrowser.Result[0]);
                 // You can do something with the selected file here
             }
