@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Drivelables{
     public class DrivelableObjects : MonoBehaviour
@@ -9,8 +10,9 @@ namespace Drivelables{
         public float brakeForce = 50f;
         
         protected Vector3 centerOfMass = new Vector3(0,0f,0);//this is object center of mass so it wont easily turn upside down.
-    
         protected Rigidbody rb;
+        private bool _onGround;
+
     
         protected virtual void Start(){
             rb = GetComponent<Rigidbody>();
@@ -27,7 +29,9 @@ namespace Drivelables{
         }
     
         protected virtual void FixedUpdate(){
-            MovementDrivelableObject();
+            if (_onGround){
+                MovementDrivelableObject();
+            }
         }
     
         protected virtual void MovementDrivelableObject(){
@@ -57,6 +61,22 @@ namespace Drivelables{
             if (_brakeInput)
             {
                 rb.AddForce(-rb.velocity.normalized * brakeForce, ForceMode.Acceleration);
+            }
+        }
+        
+        private void OnCollisionStay(Collision other){
+            if (other.gameObject.layer == 3){
+                _onGround = true;
+                Debug.Log("car is not flying");
+            }
+        }
+        
+        private void OnCollisionExit(Collision other)
+        {
+            if (other.gameObject.layer == 3)
+            {
+                _onGround = false;
+                Debug.Log("car is not on the ground");
             }
         }
         protected virtual void OnDrawGizmos(){
