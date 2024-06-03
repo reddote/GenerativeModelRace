@@ -782,6 +782,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 710495486152397780, guid: fe39919413808f84d8c90ba2a69f1e13,
+        type: 3}
+      propertyPath: 'waypoints.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1653597401}
+    - target: {fileID: 710495486152397780, guid: fe39919413808f84d8c90ba2a69f1e13,
+        type: 3}
+      propertyPath: 'waypoints.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2101885124}
+    - target: {fileID: 710495486152397780, guid: fe39919413808f84d8c90ba2a69f1e13,
+        type: 3}
+      propertyPath: 'waypoints.Array.data[2]'
+      value: 
+      objectReference: {fileID: 138762018}
+    - target: {fileID: 710495486152397780, guid: fe39919413808f84d8c90ba2a69f1e13,
+        type: 3}
+      propertyPath: 'waypoints.Array.data[3]'
+      value: 
+      objectReference: {fileID: 1184402822}
+    - target: {fileID: 710495486152397780, guid: fe39919413808f84d8c90ba2a69f1e13,
+        type: 3}
+      propertyPath: 'waypoints.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1892688928}
+    - target: {fileID: 710495486152397780, guid: fe39919413808f84d8c90ba2a69f1e13,
+        type: 3}
+      propertyPath: 'waypoints.Array.data[5]'
+      value: 
+      objectReference: {fileID: 776697469}
+    - target: {fileID: 710495486152397780, guid: fe39919413808f84d8c90ba2a69f1e13,
+        type: 3}
+      propertyPath: 'waypoints.Array.data[6]'
+      value: 
+      objectReference: {fileID: 421196087}
+    - target: {fileID: 710495486152397780, guid: fe39919413808f84d8c90ba2a69f1e13,
+        type: 3}
+      propertyPath: 'waypoints.Array.data[7]'
+      value: 
+      objectReference: {fileID: 1333189934}
     - target: {fileID: 1979462629948319538, guid: fe39919413808f84d8c90ba2a69f1e13,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -859,38 +899,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 6865374240026219585, guid: fe39919413808f84d8c90ba2a69f1e13,
         type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 5099040538511326236}
-    - targetCorrespondingSourceObject: {fileID: 6865374240026219585, guid: fe39919413808f84d8c90ba2a69f1e13,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5099040538511326235}
   m_SourcePrefab: {fileID: 100100000, guid: fe39919413808f84d8c90ba2a69f1e13, type: 3}
---- !u!114 &5099040538511326235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400048031844967146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2eeb21c1866bd414a9f4b7425f18dae4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  accelerationForce: 10
-  maxSpeed: 50
-  turnSpeed: 150
-  brakeForce: 50
-  waypoints:
-  - {fileID: 1653597401}
-  - {fileID: 2101885124}
-  - {fileID: 138762018}
-  - {fileID: 1184402822}
-  - {fileID: 1892688928}
-  - {fileID: 776697469}
-  - {fileID: 421196087}
-  - {fileID: 1333189934}
 --- !u!195 &5099040538511326236
 NavMeshAgent:
   m_ObjectHideFlags: 0

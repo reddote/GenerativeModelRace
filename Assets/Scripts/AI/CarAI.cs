@@ -16,7 +16,7 @@ namespace AI{
         private UnityEngine.AI.NavMeshAgent agent;
 
         public List<Transform> waypoints; // List of waypoints
-        private int currentWaypointIndex = 0;
+        private int _currentWaypointIndex = 0;
 
         protected virtual void Start()
         {
@@ -121,8 +121,8 @@ namespace AI{
         {
             if (waypoints.Count == 0) return;
 
-            agent.SetDestination(waypoints[currentWaypointIndex].position);
-            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Count;
+            agent.SetDestination(waypoints[_currentWaypointIndex].position);
+            _currentWaypointIndex = (_currentWaypointIndex + 1) % waypoints.Count;
         }
 
         protected virtual void OnDrawGizmos()

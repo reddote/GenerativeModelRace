@@ -119,6 +119,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3592458084407918839}
   - component: {fileID: 9050795126165201560}
+  - component: {fileID: 710495486152397780}
   - component: {fileID: 3141775879927931896}
   m_Layer: 0
   m_Name: AICar
@@ -161,6 +162,31 @@ MonoBehaviour:
   maxSpeed: 50
   turnSpeed: 150
   brakeForce: 50
+--- !u!114 &710495486152397780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6865374240026219585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eeb21c1866bd414a9f4b7425f18dae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  accelerationForce: 10
+  maxSpeed: 50
+  turnSpeed: 150
+  brakeForce: 50
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!54 &3141775879927931896
 Rigidbody:
   m_ObjectHideFlags: 0
