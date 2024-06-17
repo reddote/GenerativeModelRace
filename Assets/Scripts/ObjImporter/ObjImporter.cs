@@ -17,7 +17,7 @@ namespace ObjImporter
     {
         private OBJLoader _objLoader = new OBJLoader();
         public string path;
-        public Material mat;
+        public Material[] mat;
         public MeshFilter meshFilter;
 
         [SerializeField] private GameObject loadedGO;
@@ -42,7 +42,7 @@ namespace ObjImporter
             }
 
             // Assign the material to all MeshRenderer components in the loaded GameObject and its children
-            AssignMaterialToMeshRenderers(loadedGO, mat);
+            AssignMaterialToMeshRenderers(loadedGO, mat[0]);
 
             // Ensure MeshFilter component is present and assign it
             meshFilter = loadedGO.GetComponentInChildren<MeshFilter>();
@@ -128,14 +128,22 @@ namespace ObjImporter
 
         }
 
+        public void DropDownController(int value){
+            Debug.Log(value + "value for mat");
+            AssignMaterialToMeshRenderers(loadedGO, mat[value]);
+        }
+
         // Update is called once per frame
         void Update()
         {
-            // Calculate the rotation amount for this frame
-            float rotationAmount = rotationSpeed * Time.deltaTime;
+            if (loadedGO){
+                // Calculate the rotation amount for this frame
+                float rotationAmount = rotationSpeed * Time.deltaTime;
 
-            // Apply the rotation around the X-axis
-            loadedGO.transform.Rotate(0, rotationAmount, 0);
+                // Apply the rotation around the X-axis
+                loadedGO.transform.Rotate(0, rotationAmount, 0);
+            }
+            
         }
     }
 }

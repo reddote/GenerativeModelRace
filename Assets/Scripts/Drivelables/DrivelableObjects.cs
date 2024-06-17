@@ -6,6 +6,7 @@ namespace Drivelables{
     {
         public float accelerationForce = 10f;
         public float maxSpeed = 50f;
+        public float minSpeed = 2f;
         public float turnSpeed = 150f;
         public float brakeForce = 50f;
         
@@ -13,7 +14,8 @@ namespace Drivelables{
         protected Rigidbody rb;
         private bool _onGround;
 
-    
+        [SerializeField]protected GameObject[] particles;
+     
         protected virtual void Start(){
             rb = GetComponent<Rigidbody>();
             SetupObjectCenterOfMass();
@@ -50,6 +52,10 @@ namespace Drivelables{
             if (rb.velocity.magnitude > maxSpeed){
                 rb.velocity = rb.velocity.normalized * maxSpeed;
             }
+
+            if (rb.velocity.magnitude < 0){
+                Debug.Log("reversing");
+            }
     
             // Apply turning force
             if (_accelerationInput != 0){
@@ -63,11 +69,21 @@ namespace Drivelables{
                 rb.AddForce(-rb.velocity.normalized * brakeForce, ForceMode.Acceleration);
             }
         }
+
+        protected virtual void SmokeParticleController(bool isActive){
+            foreach (var x in particles){
+                x.gameObject.SetActive(isActive);
+            }
+        }
         
         private void OnCollisionStay(Collision other){
             if (other.gameObject.layer == 3){
                 _onGround = true;
                 Debug.Log("car is not flying");
+                SmokeParticleController(true);
+                if (rb.velocity.magnitude < minSpeed){
+                    SmokeParticleController(false);
+                }
             }
         }
         
@@ -77,6 +93,7 @@ namespace Drivelables{
             {
                 _onGround = false;
                 Debug.Log("car is not on the ground");
+                SmokeParticleController(false);
             }
         }
         protected virtual void OnDrawGizmos(){

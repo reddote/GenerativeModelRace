@@ -18,6 +18,8 @@ namespace AI{
         public List<Transform> waypoints; // List of waypoints
         private int _currentWaypointIndex = 0;
 
+        [SerializeField] private GameObject[] particles;
+
         protected virtual void Start()
         {
             rb = GetComponent<Rigidbody>();
@@ -98,6 +100,12 @@ namespace AI{
                 rb.AddForce(-rb.velocity.normalized * brakeForce, ForceMode.Acceleration);
             }
         }
+        
+        protected void SmokeParticleController(bool isActive){
+            foreach (var x in particles){
+                x.gameObject.SetActive(isActive);
+            }
+        }
 
         private void OnCollisionStay(Collision other)
         {
@@ -105,6 +113,7 @@ namespace AI{
             {
                 _onGround = true;
                 Debug.Log("car is on the ground");
+                SmokeParticleController(true);
             }
         }
 
@@ -114,6 +123,7 @@ namespace AI{
             {
                 _onGround = false;
                 Debug.Log("car is not on the ground");
+                SmokeParticleController(false);
             }
         }
 
