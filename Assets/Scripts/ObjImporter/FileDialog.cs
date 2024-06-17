@@ -11,8 +11,12 @@ namespace ObjImporter{
         
         void Start()
         {
+            
+        }
+
+        public void FileDialogOpener(){
             // Set filters (optional)
-            FileBrowser.SetFilters(true, new FileBrowser.Filter("Images", ".jpg", ".png"), new FileBrowser.Filter("Text Files", ".txt", ".pdf"));
+            FileBrowser.SetFilters(true, new FileBrowser.Filter("Objects", ".obj"), new FileBrowser.Filter("Text Files", ".txt", ".pdf"));
 
             // Set default filter that includes all files
             FileBrowser.SetDefaultFilter(".jpg");

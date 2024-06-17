@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 555013121}
   - component: {fileID: 555013124}
   - component: {fileID: 555013125}
+  - component: {fileID: 555013126}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -334,6 +335,20 @@ MonoBehaviour:
   target: {fileID: 1866214541}
   smoothSpeed: 0.125
   offset: {x: 0, y: 1.94, z: -3.670013}
+--- !u!114 &555013126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555013120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb4b5d644f2987b4ca87c5bb800549fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  player: {fileID: 1866214541}
 --- !u!1 &776697468
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,10 +947,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5304450113420677933, guid: 334fcdcfb83f3d24ca1ad36adb8ff740,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6370954030253566596, guid: 334fcdcfb83f3d24ca1ad36adb8ff740,
         type: 3}
       propertyPath: m_Name
       value: Car
+      objectReference: {fileID: 0}
+    - target: {fileID: 7582149574833779183, guid: 334fcdcfb83f3d24ca1ad36adb8ff740,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8468214115261623696, guid: 334fcdcfb83f3d24ca1ad36adb8ff740,
         type: 3}
@@ -985,6 +1010,11 @@ PrefabInstance:
     - target: {fileID: 8468214115261623696, guid: 334fcdcfb83f3d24ca1ad36adb8ff740,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8667076881599304582, guid: 334fcdcfb83f3d24ca1ad36adb8ff740,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
