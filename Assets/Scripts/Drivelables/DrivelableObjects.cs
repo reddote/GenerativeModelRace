@@ -27,7 +27,6 @@ namespace Drivelables{
         }
     
         protected virtual void Update(){
-            
         }
     
         protected virtual void FixedUpdate(){
@@ -52,10 +51,6 @@ namespace Drivelables{
             if (rb.velocity.magnitude > maxSpeed){
                 rb.velocity = rb.velocity.normalized * maxSpeed;
             }
-
-            if (rb.velocity.magnitude < 0){
-                Debug.Log("reversing");
-            }
     
             // Apply turning force
             if (_accelerationInput != 0){
@@ -69,6 +64,24 @@ namespace Drivelables{
                 rb.AddForce(-rb.velocity.normalized * brakeForce, ForceMode.Acceleration);
             }
         }
+        
+        protected bool IsCarMovingBackward(){
+            // Check if the velocity is in the opposite direction to the car's forward direction
+            return Vector3.Dot(rb.velocity, transform.forward) < 0;
+        }
+
+        protected virtual void ParticleRotation(){
+            if (IsCarMovingBackward()){
+                foreach (var x in particles){
+                    x.transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+            }
+            else{
+                foreach (var x in particles){
+                    x.transform.rotation = Quaternion.Euler(-180, 0, 0);
+                }
+            }
+        }
 
         protected virtual void SmokeParticleController(bool isActive){
             foreach (var x in particles){
@@ -80,6 +93,7 @@ namespace Drivelables{
             if (other.gameObject.layer == 3){
                 _onGround = true;
                 Debug.Log("car is not flying");
+                ParticleRotation();
                 SmokeParticleController(true);
                 if (rb.velocity.magnitude < minSpeed){
                     SmokeParticleController(false);
