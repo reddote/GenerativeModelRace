@@ -112,7 +112,7 @@ namespace AI{
             if (other.gameObject.layer == 3)
             {
                 _onGround = true;
-                Debug.Log("car is on the ground");
+                //Debug.Log("car is on the ground");
                 SmokeParticleController(true);
             }
         }
@@ -122,7 +122,7 @@ namespace AI{
             if (other.gameObject.layer == 3)
             {
                 _onGround = false;
-                Debug.Log("car is not on the ground");
+                //Debug.Log("car is not on the ground");
                 SmokeParticleController(false);
             }
         }

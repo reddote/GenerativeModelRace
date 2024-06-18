@@ -92,7 +92,7 @@ namespace Drivelables{
         private void OnCollisionStay(Collision other){
             if (other.gameObject.layer == 3){
                 _onGround = true;
-                Debug.Log("car is not flying");
+                //Debug.Log("car is not flying");
                 ParticleRotation();
                 SmokeParticleController(true);
                 if (rb.velocity.magnitude < minSpeed){
@@ -106,7 +106,7 @@ namespace Drivelables{
             if (other.gameObject.layer == 3)
             {
                 _onGround = false;
-                Debug.Log("car is not on the ground");
+                //Debug.Log("car is not on the ground");
                 SmokeParticleController(false);
             }
         }
