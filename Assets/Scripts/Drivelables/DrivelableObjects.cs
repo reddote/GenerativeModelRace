@@ -41,9 +41,8 @@ namespace Drivelables{
             float _turnInput = Input.GetAxis("Horizontal");
             bool _brakeInput = Input.GetKey(KeyCode.Space);
     
-            // Calculate acceleration and turning forces
+            // Calculate acceleration force
             Vector3 _acceleration = transform.forward * (accelerationForce * _accelerationInput);
-            float _turnForce = turnSpeed * _turnInput;
     
             // Apply acceleration and limit max speed
             rb.AddForce(_acceleration, ForceMode.Acceleration);
@@ -53,11 +52,15 @@ namespace Drivelables{
             }
     
             // Apply turning force
-            if (_accelerationInput != 0){
-                Quaternion _turnRotation = Quaternion.Euler(0f, _turnForce * Time.fixedDeltaTime, 0f);
-                rb.MoveRotation(rb.rotation * _turnRotation);
-            }
+            float _turnForce = turnSpeed * _turnInput * Time.fixedDeltaTime;
+            Quaternion _turnRotation = Quaternion.Euler(0f, _turnForce, 0f);
+            rb.MoveRotation(rb.rotation * _turnRotation);
      
+            // Adjust velocity to match the forward direction if no acceleration input is given
+            if (_accelerationInput == 0 && rb.velocity.magnitude > 0){
+                rb.velocity = transform.forward * Mathf.Sign(Vector3.Dot(rb.velocity, transform.forward)) * rb.velocity.magnitude;
+            }
+    
             // Apply brake force
             if (_brakeInput)
             {
@@ -83,9 +86,18 @@ namespace Drivelables{
             }
         }
 
-        protected virtual void SmokeParticleController(bool isActive){
-            foreach (var x in particles){
-                x.gameObject.SetActive(isActive);
+        protected virtual void SmokeParticleController(){
+            if (IsCarMovingBackward()){
+                particles[0].SetActive(false);
+                particles[1].SetActive(true);
+            }
+            else{
+                particles[0].SetActive(true);
+                particles[1].SetActive(false);
+            }
+            if (rb.velocity.magnitude < minSpeed){
+                particles[0].SetActive(false);
+                particles[1].SetActive(false);
             }
         }
         
@@ -93,11 +105,8 @@ namespace Drivelables{
             if (other.gameObject.layer == 3){
                 _onGround = true;
                 //Debug.Log("car is not flying");
-                ParticleRotation();
-                SmokeParticleController(true);
-                if (rb.velocity.magnitude < minSpeed){
-                    SmokeParticleController(false);
-                }
+                //ParticleRotation();
+                SmokeParticleController();
             }
         }
         
@@ -107,7 +116,8 @@ namespace Drivelables{
             {
                 _onGround = false;
                 //Debug.Log("car is not on the ground");
-                SmokeParticleController(false);
+                particles[0].SetActive(false);
+                particles[1].SetActive(false);
             }
         }
         protected virtual void OnDrawGizmos(){

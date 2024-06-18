@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FxTemporaire
   - Checkpoint
+  - CarAI
   layers:
   - Default
   - TransparentFX

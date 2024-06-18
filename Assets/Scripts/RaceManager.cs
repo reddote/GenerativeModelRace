@@ -35,7 +35,6 @@ public class RaceManager : MonoBehaviour
 			if (cars[i] == playerCar){
 				trackPosition.text = (i + 1) + "";
 			}
-			Debug.Log($"Car {cars[i].name} is in position {i + 1}");
 		}
 	}
 }
